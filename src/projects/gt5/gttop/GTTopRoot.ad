@@ -1284,31 +1284,6 @@ module GTTopRoot::Menus::SideMenu::DLC
     method onActivate(context)
     {
         main::sound.play("ok");
-
-        if (Grim2.isOutOfService())
-        {
-            doDLCPopup(context);
-            return EVENTRESULT_FILTER;
-        }
-
-        if (pdistd::MNetworkInterface::isUp())
-        {
-            LeaveDetectUtil::suspend(context);
-            var result = LoginUtil::tryLogin(context);
-            LeaveDetectUtil::resume(context);
-
-            if (!result)
-                return EVENTRESULT_FILTER;
-        }
-
-        if (!LoginUtil::isOnline())
-        {
-            LeaveDetectUtil::suspend(context);
-            DialogUtil::openConfirmDialog(context, DialogUtil::ERROR, context.translate(ROOT, "Network", "CANNOT_CONNECT_SERVER"));
-            LeaveDetectUtil::resume(context);
-            return EVENTRESULT_FILTER;
-        }
-
         doDLCPopup(context);
         return EVENTRESULT_FILTER;
     }
