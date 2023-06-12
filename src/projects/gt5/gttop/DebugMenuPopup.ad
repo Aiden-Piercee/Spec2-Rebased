@@ -208,6 +208,9 @@ module DebugMenuPopup::Template::Buttons::CancelOK::OK
 {
     method onActivate(context)
     {
+        if (!DialogUtil::openConfirmDialog(context, DialogUtil::YESNO, "This will apply A/B-Spec Level & Exp, Language and Credits.\nContinue?"))
+            return EVENTRESULT_FILTER;
+
         main::sound.play("ok");
         ROOT.apply(context);
 
