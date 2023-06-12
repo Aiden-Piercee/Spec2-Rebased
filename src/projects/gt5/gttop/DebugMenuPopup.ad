@@ -27,6 +27,8 @@ module DebugMenuPopup
     attribute loginbonus_get_num;
     attribute lastlogin_slide_days;
 
+    static sCursorStateOnEntry;
+
     method open(context)
     {
         self.popup = main::SequenceUtil::ModalPage(context, ROOT);
@@ -170,7 +172,7 @@ module DebugMenuPopup
     }
 
     method onInitialize(context)
-    {
+    {            
         reflect(context);
         
         Template.adjust_size();
@@ -189,11 +191,17 @@ module DebugMenuPopup
         Patch209Detail.visible = false;
         Patch210Detail.visible = false;
         Patch211Detail.visible = false;
+
+        sCursorStateOnEntry = context.cursor_visible;
+        if (!sCursorStateOnEntry)
+            context.cursor_visible = true;
     }
 
     method onFinalize(context)
     {
         Template::ScrolledWindow::clip::space::Language::OptionMenu::popup::vbox.clearWindow(context);
+
+        context.cursor_visible = sCursorStateOnEntry;
     }
 
     method onCancel(context, event, item)
