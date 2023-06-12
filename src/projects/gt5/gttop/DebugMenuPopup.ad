@@ -172,7 +172,7 @@ module DebugMenuPopup
     }
 
     method onInitialize(context)
-    {            
+    {
         reflect(context);
         
         Template.adjust_size();
