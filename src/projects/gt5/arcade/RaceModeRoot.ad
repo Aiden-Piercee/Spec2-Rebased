@@ -130,7 +130,7 @@ module RaceModeRoot::ModeSelector
             else
                 self.MoveEffect.setStartDuration(0, 0.0f);
 
-            self.MoveEffect.on_effect_end = *self->end_move;
+            self.MoveEffect.on_effect_end = *self.*end_move;
             self.MoveEffect.start();
         }
     }
@@ -215,7 +215,7 @@ module RaceModeRoot::ModeSelector
             {
                 file = "/textdata/gt5/event_race/dc_topgear_timetrial_2011_offline.xml";
             }
-            
+
             if ("86gp_final" == GAME_STATUS.user_profile.option.demo_version_code)
             {
                 file = "/textdata/demo/arcade_timetrial_86gp_final.xml";
@@ -485,10 +485,10 @@ module RaceModeRoot::Difficulty
         var focus_index = 0;
 
         var data_list = [
-            ['value': ArcadeProject::DifficultyEnum::EASY, $"label": "DIFFICULTY_EASY", $"image": "image/gt5/icon/arcade_level_C.dds"],
-            ['value': ArcadeProject::DifficultyEnum::NORMAL, $"label": "DIFFICULTY_NORMAL", $"image": "image/gt5/icon/arcade_level_B.dds"],
-            ['value': ArcadeProject::DifficultyEnum::PRO, $"label": "DIFFICULTY_PRO", $"image": "image/gt5/icon/arcade_level_A.dds"],
-            ['value': ArcadeProject::DifficultyEnum::MM_PRO, $"label": "DIFFICULTY_MASTER", $"image": "image/gt5/icon/arcade_level_A.dds"],
+            ['value': ArcadeProject::DifficultyEnum::EASY, 'label': "DIFFICULTY_EASY", 'image': "image/gt5/icon/arcade_level_C.dds"],
+            ['value': ArcadeProject::DifficultyEnum::NORMAL, 'label': "DIFFICULTY_NORMAL", 'image': "image/gt5/icon/arcade_level_B.dds"],
+            ['value': ArcadeProject::DifficultyEnum::PRO, 'label': "DIFFICULTY_PRO", 'image': "image/gt5/icon/arcade_level_A.dds"],
+            ['value': ArcadeProject::DifficultyEnum::MM_PRO, 'label': "DIFFICULTY_MASTER", 'image': "image/gt5/icon/arcade_level_A.dds"],
         ];
 
         for (var i = 0; i < data_list.size; i++)
