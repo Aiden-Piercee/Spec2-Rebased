@@ -20,13 +20,9 @@ module GTTopProject
     PROJECT.load("/scripts/gt5/util/Garage2Util");
     PROJECT.load("/scripts/gt5/util/ScrollNewsUtil");
     PROJECT.load("/scripts/gt5/util/DLCUtil");
-
-    if (GetVersionBranch() == "demo")
-    {
-        PROJECT.load("/scripts/gt5/util/OnlineUtil");
-        PROJECT.load("/scripts/gt5/util/OnlineEventUtil");
-        PROJECT.load("/scripts/gt5/util/QuickMatchUtil");
-    }
+    PROJECT.load("/scripts/gt5/util/OnlineUtil");
+    PROJECT.load("/scripts/gt5/util/OnlineEventUtil");
+    PROJECT.load("/scripts/gt5/util/QuickMatchUtil");
 
     static additional_projects;
     static additional_sounds;
@@ -85,8 +81,7 @@ module GTTopProject
         additional_projects = Array();
         var projects =["news", "manual"];
 
-        if (GetVersionBranch() == "demo")
-            projects.push("online");
+        projects.push("online");
 
         foreach (var project_name in projects)
         {
