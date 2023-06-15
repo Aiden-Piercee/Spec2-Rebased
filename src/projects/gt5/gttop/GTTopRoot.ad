@@ -26,6 +26,18 @@ module GTTopRoot
     method open(context)
     {
         SequenceUtil::startPage(context, self);
+
+        /* Fix when going into gps_replay which does not reset RenderControl's (thus MOrganizer) screen position */
+        var renderFace = menu::MRenderControl();
+        renderFace.x = 0;
+        renderFace.y = 0;
+        renderFace.w = 1920;
+        renderFace.h = 1080;
+        renderFace.visible = false;
+
+        ROOT.appendChild(renderFace);
+        renderFace.begin(ORG); // Important
+        renderFace.end(ORG);
     }
 
     method onLoad(context)
